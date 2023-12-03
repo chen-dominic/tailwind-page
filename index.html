@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito:wght@400;500;600;700;800;900&family=Young+Serif&display=swap" rel="stylesheet">
+    <title>Lab 10: Tailwind CSS</title>
+</head>
+<body class= "bg-gray-800 flex flex-col items-center justify-center overflow-x-hidden">
+    <div class="bg-gray-950 text-gray-300 p-4 w-screen">
+        <h1 class="text-4xl font-bold text-center">Lab 10: Tailwind CSS</h1>
+    </div>
+
+    <div class="container p-6 flex flex-col items-center justify-center">
+        <h1 class="text-gray-300 text-2xl font-bold text-center">How I Installed TailwindCSS</h1>
+        <div class="box p-8 mt-8 bg-black rounded-xl w-6/12 text-base">
+            <p class="text-gray-500">// Starting with these commands</p>
+            <p class="text-gray-50">
+                $ npm install tailwindcss <br>
+                $ npx tailwindcss init <br> <br>
+            </p>
+
+            <p class="text-gray-500">// Then I added an import to a CSS file</p>
+            <p class="text-gray-500">/* styles.css */</p>
+            <p class="text-gray-50">
+                @import './tailwind.css'; <br> <br>
+            </p>
+
+            <p class="text-gray-500">// And included this in the <i>package.json</i></p>
+            <p class="text-gray-50">
+                "scripts": { "build:css": "tailwindcss build styles.css -o output.css" } <br> <br>
+            </p>
+
+            <p class="text-gray-500">// Now to execute the TailwindCSS changes, I ran this command</p>
+            <p class="text-gray-50">
+                $ npx tailwindcss build styles.css -o output.css <br> <br>
+            </p>
+
+            <p class="text-gray-500">// However, I didn't want to run a command each time I made a change, so I ran this once</p>
+            <p class="text-gray-50">
+                $ npx tailwindcss build styles.css -o output.css --watch <br> <br>
+            </p>
+        </div>
+    </div>
+
+    <h1 class="text-gray-300 text-2xl font-bold text-center">The Build</h1>
+    <div class="text-con w-5/12 mt-4 text-blue-100 text-1xl text-justify">
+        <p>
+            I built this page using my prior knowledge of HTML
+            and incorporated Tailwind properties in the class
+            names of the HTML tags. Creating this page and using
+            Tailwind is similar to using Bootstrap like we did
+            earlier in this course.
+        </p>
+        <p>
+            I began with an empty directory and entered the above
+            installation steps. After that, the preset Tailwind
+            files populated my directory, and then I created an
+            index.html and built my webpage as normal. The only
+            difference was that I utilized Tailwind properties
+            in the class names instead of creating and using a CSS stylesheet.
+        </p>
+    </div>
+
+    <h1 class="text-gray-300 text-2xl font-bold text-center mt-8">Challenges</h1>
+    <div class="text-con w-5/12 mt-4 text-blue-100 text-1xl text-justify mb-12 flex flex-col items-center justify-center">
+        <p>
+            My main challenge when I started this webpage is that
+            the CSS properties were not updating while I opened my file locally. I tested my file
+            with many Tailwind class properties and when I opened
+            the webpage, it would be as if there were no CSS
+            styling at all. To overcome this, I used online resources to see what I had wrong
+            and it turns out that I was missing the link to the index.html
+            in my tailwind.config.js file.
+        </p>
+
+        <div class="box p-8 mt-8 bg-black rounded-xl w-full text-base">
+            <p class="text-gray-500">// How I had it</p>
+            <pre class="text-gray-50">
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: [''],
+    theme: {
+    extend: {},
+    },
+    plugins: [],
+}
+            </pre>
+            <p class="text-gray-500">// How it's supposed to be</p>
+            <pre class="text-gray-50">
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    content: ['./index.html'],
+    theme: {
+    extend: {},
+    },
+    plugins: [],
+}
+            </pre>
+        </div>
+    </div>
+    
+
+    <footer class="text-blue-200 text-md m-8">© Last CPS530 Lab by Dominic Chen</footer>
+</body>
+</html>
